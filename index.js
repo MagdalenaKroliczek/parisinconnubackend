@@ -8,7 +8,8 @@ const nodemailer = require("nodemailer");
 app.use(cors());
 app.use(express.json());
 app.use("/", router);
-app.listen(process.env.PORT);
+let port = process.envPORT || 3010;
+app.listen(port, () => console.log(`message bien énvoye ${port}`));
 
 const contactEmail = nodemailer.createTransport({
   service: 'interia',
