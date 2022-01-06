@@ -136,7 +136,7 @@ app.get("/", function (req, res) {
 // app.listen(process.env.PORT);
 
 
-router.post("/contact", (req, res) => {
+router.post("/contactform", (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const message = req.body.message; 
