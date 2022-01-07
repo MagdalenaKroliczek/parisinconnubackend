@@ -10,20 +10,52 @@ app.use(express.json());
 app.use("/", router);
 app.listen(process.env.PORT);
 
-const contactEmail = nodemailer.createTransport({
-  service: 'interia',
-  auth: {
-    user: "parisinconnu@interia.eu",
-    pass: "Romain1988",
-  },
+// const contactEmail = nodemailer.createTransport({
+//   service: 'interia',
+//   auth: {
+//     user: "parisinconnu@interia.eu",
+//     pass: "Romain1988",
+//   },
+// });
+
+// contactEmail.verify((error) => {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log("Ready to Send");
+//   }
+// });
+
+var nodemailer = require("nodemailer");
+
+// create reusable transport method (opens pool of SMTP connections)
+var smtpTransport = nodemailer.createTransport("SMTP",{
+    service: "Gmail",
+    auth: {
+        user: "magdalena.kroliczek@gmail.com",
+        pass: "Romain1988@"
+    }
 });
 
-contactEmail.verify((error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("Ready to Send");
-  }
+// setup e-mail data with unicode symbols
+var mailOptions = {
+    from: "Fred Foo ✔ <foo@blurdybloop.com>", // sender address
+    to: "bar@blurdybloop.com, baz@blurdybloop.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world ✔", // plaintext body
+    html: "<b>Hello world ✔</b>" // html body
+}
+
+// send mail with defined transport object
+smtpTransport.sendMail(mailOptions, function(error, response){
+    if(error){
+        console.log(error);
+    }else{
+        console.log("Message sent: " + response.message);
+    }
+
+    // if you don't want to use this transport object anymore, uncomment following line
+    //smtpTransport.close(); // shut down the connection pool, no more messages
 });
 
  const images = [
@@ -136,24 +168,24 @@ app.get("/", function (req, res) {
 // app.listen(process.env.PORT);
 
 
-router.post("/contactform", (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const message = req.body.message; 
-  const mail = {
-    from: name,
-    to: "parisinconnu@interia.eu",
-    subject: "Contact Form Submission",
-    html: `<p>Name: ${name}</p>
-           <p>Email: ${email}</p>
-           <p>Message: ${message}</p>`,
-  };
-  contactEmail.sendMail(mail, (error) => {
-    if (error) {
-      console.log(error)
-      res.json({ status: "ERROR" });
-    } else {
-      res.json({ status: "Message Sent" });
-    } 
-  });
-});
+// router.post("/contactform", (req, res) => {
+//   const name = req.body.name;
+//   const email = req.body.email;
+//   const message = req.body.message; 
+//   const mail = {
+//     from: name,
+//     to: "parisinconnu@interia.eu",
+//     subject: "Contact Form Submission",
+//     html: `<p>Name: ${name}</p>
+//            <p>Email: ${email}</p>
+//            <p>Message: ${message}</p>`,
+//   };
+//   contactEmail.sendMail(mail, (error) => {
+//     if (error) {
+//       console.log(error)
+//       res.json({ status: "ERROR" });
+//     } else {
+//       res.json({ status: "Message Sent" });
+//     } 
+//   });
+// });
