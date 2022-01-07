@@ -14,8 +14,8 @@ app.listen(process.env.PORT);
 const contactEmail = nodemailer.createTransport('smtps://user%40gmail.com:pass@smtp.gmail.com',{
   service: 'Gmail',
   auth: {
-    user: "magdalena.kroliczek@gmail.com",
-    pass: "Romain1988@",
+    user: "parisinconnumagda@gmail.com",
+    pass: "Magdalena1988@",
   },
 });
 
@@ -100,32 +100,32 @@ contactEmail.verify((error) => {
   ];
 
 app.get("/images", function (req, res) {
-  console.log("appel data yannick");
+  console.log("appel data");
   res.json(images);
 });
 
 app.get("/images1", function (req, res) {
-    console.log("appel data yannick");
+    console.log("appel data");
     res.json(images1);
   });
 
   app.get("/images3", function (req, res) {
-    console.log("appel data yannick");
+    console.log("appel data");
     res.json(images3);
   });
 
   app.get("/images4", function (req, res) {
-    console.log("appel data yannick");
+    console.log("appel data");
     res.json(images4);
   });
 
   app.get("/images5", function (req, res) {
-    console.log("appel data yannick");
+    console.log("appel data");
     res.json(images5);
   });
 
   app.get("/images6", function (req, res) {
-    console.log("appel data yannick");
+    console.log("appel data");
     res.json(images6);
   });
 
@@ -143,7 +143,7 @@ router.post("/contactform", (req, res) => {
   const message = req.body.message; 
   const mail = {
     from: name,
-    to: "magdalena.kroliczek@gmail.com",
+    to: "parisinconnumagda@gmail.com",
     subject: "Contact Form Submission",
     html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
