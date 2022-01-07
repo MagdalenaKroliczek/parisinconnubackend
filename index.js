@@ -3,7 +3,7 @@ const app = express();
 require("dotenv").config();
 const router = express.Router();
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 
 app.use(cors());
 app.use(express.json());
