@@ -12,7 +12,7 @@ app.listen(process.env.PORT);
 
 
 const contactEmail = nodemailer.createTransport('smtps://user%40gmail.com:pass@smtp.gmail.com',{
-  service: 'interia',
+  service: 'Gmail',
   auth: {
     user: "magdalena.kroliczek@gmail.com",
     pass: "Romain1988@",
